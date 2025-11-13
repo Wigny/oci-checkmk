@@ -1,34 +1,101 @@
 # OCI to CheckMK Integration Project - TODO List
 
-## 1. Setup & Research
+## Phase 1: Setup & Prototype - COMPLETED ✓
 
-- [ ] Set up project structure and dependencies (requirements.txt, virtual environment setup)
-- [ ] Research and document OCI SDK authentication methods (config file, instance principal, etc.)
-- [ ] Research CheckMK integration options (Special Agent, local checks, or Piggyback mechanism)
-- [ ] **Explore OCI SDK for ExadataCC and VMClusters data fetching**
+- [x] Set up project structure and dependencies (pyproject.toml with uv support)
+- [x] Explore OCI SDK for ExadataCC and VMClusters data fetching
+- [x] Build working prototype that fetches ExadataCC and VMCluster data
+- [x] Implement automatic compartment discovery across tenancy
+- [x] Create basic documentation (README, RESEARCH_NOTES)
 
-## 2. Core Development
+## Phase 2: Validation & Testing (CURRENT)
 
-- [ ] Implement OCI client initialization with authentication
-- [ ] Create inventory collection module for OCI resources (Compute, DB, Network, Storage)
-  - [ ] ExadataCC (Cloud@Customer) resources
-  - [ ] VM Clusters
-  - [ ] Other database resources
-- [ ] Implement metrics collection from OCI Monitoring service
-- [ ] Design and implement data transformation to CheckMK format
-- [ ] Create CheckMK agent/special agent output formatter
+- [ ] **Validate prototype with real OCI environment**
+- [ ] **Test prototype against actual ExadataCC infrastructure**
+- [ ] Verify all data fields are captured correctly
+- [ ] Identify any missing data or edge cases
+- [ ] Document any API limitations or issues discovered
 
-## 3. Polish & Production-Ready
+## Phase 3: CheckMK Integration Research
 
-- [ ] Implement error handling and logging
-- [ ] Add configuration file support (YAML/JSON for OCI regions, resources to monitor, etc.)
-- [ ] Create main CLI script for running the integration
+- [ ] Research CheckMK Special Agent architecture and requirements
+- [ ] Understand CheckMK agent output format (piggyback vs direct)
+- [ ] Study CheckMK service discovery mechanisms
+- [ ] Review CheckMK plugin development best practices
+- [ ] Identify which ExadataCC metrics map to CheckMK services
 
-## 4. Quality & Documentation
+## Phase 4: OCI Monitoring Integration
 
-- [ ] Write unit tests for core functionality
-- [ ] Create documentation (README, setup guide, configuration examples)
-- [ ] Test integration end-to-end with CheckMK instance
+- [ ] Research OCI Monitoring service API for metrics
+- [ ] Identify available metrics for ExadataCC infrastructure
+- [ ] Identify available metrics for VM Clusters
+- [ ] Implement metrics collection from OCI Monitoring
+- [ ] Add time-series data aggregation (if needed)
+- [ ] Handle metric pagination and rate limiting
+
+## Phase 5: CheckMK Agent/Special Agent Development
+
+- [ ] Design CheckMK agent output format for ExadataCC
+- [ ] Implement CheckMK special agent script structure
+- [ ] Create piggyback data formatter for infrastructure hierarchy
+- [ ] Map OCI data to CheckMK service checks
+- [ ] Implement check results with OK/WARN/CRIT/UNKNOWN states
+- [ ] Add performance data (metrics) to check outputs
+- [ ] Create CheckMK check plugins for custom services
+
+## Phase 6: Production Features
+
+- [ ] Implement proper error handling and retries
+- [ ] Add structured logging (JSON format for production)
+- [ ] Create configuration file support (YAML)
+  - [ ] OCI authentication settings
+  - [ ] Compartment filtering options
+  - [ ] Metric collection settings
+  - [ ] CheckMK server settings
+- [ ] Add caching mechanism to avoid excessive API calls
+- [ ] Implement rate limiting and backoff strategies
+- [ ] Add command-line interface improvements
+
+## Phase 7: Refactoring & Code Quality
+
+- [ ] Refactor prototype into modular structure
+  - [ ] `oci_client.py` - OCI SDK wrapper
+  - [ ] `collectors.py` - Data collection logic
+  - [ ] `formatters.py` - CheckMK output formatting
+  - [ ] `config.py` - Configuration management
+  - [ ] `main.py` - CLI entry point
+- [ ] Add type hints throughout codebase
+- [ ] Implement data models using dataclasses or Pydantic
+- [ ] Add proper exception handling hierarchy
+
+## Phase 8: Testing & Quality Assurance
+
+- [ ] Write unit tests for OCI data collection
+- [ ] Write unit tests for CheckMK formatting
+- [ ] Create integration tests with mocked OCI responses
+- [ ] Add test coverage reporting
+- [ ] Set up pre-commit hooks (black, ruff)
+- [ ] Add GitHub Actions or CI/CD pipeline
+
+## Phase 9: Documentation & Deployment
+
+- [ ] Write comprehensive README with setup instructions
+- [ ] Create CheckMK integration guide
+- [ ] Document OCI IAM permissions required
+- [ ] Add configuration examples for different scenarios
+- [ ] Create troubleshooting guide
+- [ ] Write deployment guide for CheckMK server
+- [ ] Add architecture diagrams
+
+## Phase 10: End-to-End Testing & Release
+
+- [ ] Test with CheckMK server in lab environment
+- [ ] Verify service discovery works correctly
+- [ ] Test alert generation and notifications
+- [ ] Performance testing with large tenancies
+- [ ] Create installation package/script
+- [ ] Prepare release notes
+- [ ] Tag first release version
 
 ## Project Goals
 
